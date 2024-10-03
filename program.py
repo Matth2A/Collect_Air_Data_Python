@@ -1,8 +1,6 @@
 from downloadFile import downloadFile
-# Main
-if __name__ == "__main__":
 
-    #downloadFiles("2013", "2014")
+if __name__ == "__main__":
 
     file = downloadFile()
 

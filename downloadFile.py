@@ -28,16 +28,14 @@ class downloadFile:
         self.listName = "download_data-"+dateTimeStart+"-"+dateTimeEnd+".zip"
 
 
-
     # Function to download the file
     def downloadFile(self, startYear, endYear):
         # Set the request body
         self.setRequestBody(["RO"], ["string"], ["PM10", "PM25"], 2, startYear, endYear, "day")
         self.apiconnection.setRequestBody(self.request_body)
 
-
+        # Get the file
         downloadFile = self.apiconnection.getApiDataPost()
-
 
         # Download the file
         output = open(self.downloadPath+"data\\linkList\\"+self.listName, 'wb')
@@ -45,6 +43,7 @@ class downloadFile:
 
         # Print the contents of the downloaded file
         with open(self.downloadPath+"data\\linkList\\"+self.listName, 'rb') as file:
+            # Skip the first line wich is the title
             next(file)
 
             # Open the first link in the file
@@ -58,11 +57,13 @@ class downloadFile:
         # Convert the parquet file to a csv file
         self.parquetToCsv(startYear, endYear)
 
+
     # Function to create a folder
     def createFolder(self, folderPath):
         # Check if the folder exists, if not create it
         if not os.path.exists(self.downloadPath + folderPath):
             os.makedirs(self.downloadPath + folderPath)
+
 
     # Function to convert the parquet file to a csv file
     def parquetToCsv(self, startYear, endYear):
