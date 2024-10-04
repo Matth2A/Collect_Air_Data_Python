@@ -1,6 +1,6 @@
-import requests, os, pandas as pd
+import requests, pandas as pd
 
-from apiData import apiData
+from Packages.apiData import apiData
 
 class downloadFile:
 
@@ -31,21 +31,15 @@ class downloadFile:
         self.listName = "download_data-" + dateTimeStart + "-" + dateTimeEnd + "-" + pollutants[0] + ".zip"
 
 
-    # Function to create a folder
-    def createFolder(self, folderPath):
-        # Check if the folder exists, if not create it
-        if not os.path.exists(self.downloadPath + folderPath):
-            os.makedirs(self.downloadPath + folderPath)
 
-
-    # Function to convert the parquet file to a csv file
+    # Packages to convert the parquet file to a csv file
     def parquetToCsv(self, startYear, endYear, po):
         df = pd.read_parquet(self.downloadPath + "data\\parquet\\" + "parquet_data" + startYear + "-" + endYear + "-" + po + ".parquet")
         # Convert the parquet file to a csv file
         df.to_csv(self.downloadPath + "data\\csv\\" + "csv" + startYear + "-" + endYear + "-" + po + ".csv", index=False)
 
 
-    # Function to download the file
+    # Packages to download the file
     def downloadFile(self, startYear, endYear, pollutant):
         for i in pollutant:
 
