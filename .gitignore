@@ -1,2 +1,6 @@
-*.zip
+# Downloaded files
 data/
+
+# Still in test phase to uncover it's use
+aqi.py
+
