@@ -1,4 +1,5 @@
 import os
+# Function used in several classes to create a folder
 
 # Packages to create a folder
 def createFolder(folderPath):
