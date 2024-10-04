@@ -9,4 +9,4 @@ if __name__ == "__main__":
     file.createFolder("data\\parquet")
     file.createFolder("data\\csv")
 
-    file.downloadFile("2014", "2015")
+    file.downloadFile("2013", "2014", ["PM10", "PM25"])
